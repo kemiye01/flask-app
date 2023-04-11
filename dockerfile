@@ -1,5 +1,7 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim-buster
+FROM python:3.7-alpine
+
+RUN mkdir /app
 
 # Set the working directory to /app
 WORKDIR /app
@@ -12,6 +14,10 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Expose the port the application will run on
 EXPOSE 5000
+
+ENV NAME world
+
+CMD ["python","flaskapp.py"]
 
 # Set the environment variable for Flask to know where to find the application
 ENV FLASK_APP flaskapp.py
