@@ -1,0 +1,52 @@
+# ---
+# - name: install app reqirements
+#   hosts: all
+#   become: true
+
+#   tasks:
+#     - name: Update the apt package index
+#       apt: 
+#         update_cache: yes
+#         state: latest
+
+#     - name: clone React App Repo
+#       git:
+#         repo: https://github.com/bootcampus-elitesolutionsit/docker-course.git
+#         dest: /home/ubuntu/docker
+#         clone: yes
+#         update: no
+
+#     - name:  install packages to allow apt to use a repository over HTTPS
+#       apt: name={{ item }} state=latest
+#       loop:
+#         - git
+#         - curl
+#         - gnupg 
+#         - lsb-release
+#         - p
+
+#     - name: make directory for docker key
+#       shell: 'sudo mkdir -m 0755 -p /etc/apt/keyrings'
+
+#     - name: Add Docker’s official GPG key
+#       apt_key:
+#         url: https://download.docker.com/linux/ubuntu/gpg
+#         state: present
+
+#     - name: set up the repository
+#       apt_repository:
+#         repo: deb https://download.docker.com/linux/ubuntu bionic stable
+
+#     - name:  Update Package & install the latest version of docker
+#       apt: name={{ item }} update_cache=yes state=latest
+#       loop: 
+#         - docker-ce
+#         - docker-ce-cli
+#         - containerd.io 
+#         - docker-buildx-plugin
+#         - docker-compose-plugin
+
+#     - name: Docker-compose install and premissions
+#       shell: |
+#           sudo curl -SL https://github.com/docker/compose/releases/download/v2.17.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+#           sudo chmod +x /usr/local/bin/docker-compose
