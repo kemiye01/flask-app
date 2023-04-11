@@ -1,11 +1,4 @@
-flask==2.0.1
-requests==2.25.1
-
-app==Flask==2.0.1
-
-@app.route('/')
-def index():
-    return 'I am now a DevOps Engineer and ready to get into the job market'
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# flask==2.0.1
+# requests==2.25.1
+# pandas==1.3.3
+# numpy==1.21.2
