@@ -1,7 +1,7 @@
 flask==2.0.1
 requests==2.25.1
 
-app==Flask(__name__)
+app==Flask==2.0.1
 
 @app.route('/')
 def index():
