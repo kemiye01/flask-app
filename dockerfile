@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r app.py
+RUN pip install --trusted-host pypi.python.org -r flaskapp.py
 
 # Copy the current directory contents into the container at /app
 COPY . /app
