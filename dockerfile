@@ -39,7 +39,7 @@
 # CMD ["python", "flaskapp.py"]
 
 
-FROM python:3.7-alpine
+FROM python:3.7-alpine AS builder
 
 RUN mkdir /app
 # Set working directory
@@ -65,3 +65,7 @@ EXPOSE 5000
 
 # Start the application
 CMD ["flask", "run"]
+
+FROM httpd 
+
+COPY --from=builder /app/flaskapp.py /usr/local/apache2/htdocs
