@@ -2,8 +2,12 @@
 - name: Deploy Flask App
   hosts: all
   become: yes
-  vars:  
+  collections:
+    - community.general
+  vars: 
+   ansible_become: yes 
    ansible_python_interpreter: /usr/bin/python3
+   container_default_behavior: compatibility
 
   tasks:
     - name: Install Docker
