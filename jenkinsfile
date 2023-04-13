@@ -45,7 +45,7 @@ pipeline {
         stage('Deploy Docker image with Ansible') {
             steps {
                 script {
-                   ansiblePlaybook credentialsId: 'ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host.ini', ansible_python_interpreter: '/usr/bin/python3', playbook: 'flask.yml'
+                   ansiblePlaybook credentialsId: 'ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host.ini', ansible_python_interpreter: '/usr/bin/python 2.6', playbook: 'flask.yml'
                 }
             }
         }
