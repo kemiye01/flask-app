@@ -22,13 +22,12 @@
     
     # Pull Docker image
     - name: Pull Docker image
-      become_user: kemiye01
       docker_image:
         name: kemiye01/flask-app:v3
     
     # Run Docker container
     - name: Run Docker container
-      become_user: kemiye01
+      become: yes
       docker_container:
         name: "{{ docker_container_name }}"
         image: "{{ docker_image_name }}"
