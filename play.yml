@@ -11,7 +11,7 @@
   tasks:
     # Install Docker
     - name: Install pip
-      pip:
+      yum:
         name: pip2
         state: present
 
