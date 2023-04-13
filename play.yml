@@ -12,7 +12,7 @@
     # Install Docker
     - name: Install pip
       yum:
-        name: pip2
+        name: pip
         state: present
 
     - name: Install Docker
