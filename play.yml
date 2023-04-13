@@ -17,6 +17,15 @@
         name: python3
         state: present
 
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install pip
+      apt:
+        name: python3-pip
+        state: present
+
     # - name: install pip
     #   apt:
     #     name: python-pip
@@ -38,20 +47,22 @@
       service:
         name: docker
         state: started
+
+    
     
     # Pull Docker image
-    - name: Pull Docker image
-      docker_image:
-        name: kemiye01/flask-app:v3
+    # - name: Pull Docker image
+    #   docker_image:
+    #     name: kemiye01/flask-app:v3
     
-    # Run Docker container
-    - name: Run Docker container
-      become: yes
-      docker_container:
-        name: "{{ docker_container_name }}"
-        image: "{{ docker_image_name }}"
-        state: started
-        restart: yes
-        tty: yes
-        interactive: yes
+    # # Run Docker container
+    # - name: Run Docker container
+    #   become: yes
+    #   docker_container:
+    #     name: "{{ docker_container_name }}"
+    #     image: "{{ docker_image_name }}"
+    #     state: started
+    #     restart: yes
+    #     tty: yes
+    #     interactive: yes
         # command: "{{ python_interpreter }}"
