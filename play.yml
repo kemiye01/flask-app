@@ -9,6 +9,12 @@
     python_interpreter: /usr/bin/python2.7
   
   tasks:
+     
+    - name: Install required packages
+      package:
+        name:
+          - python2
+          - python2-pip
     # Install Docker
     - name: Install Docker
       package:
