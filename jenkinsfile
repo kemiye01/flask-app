@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = "kemiye01"
         DOCKER_IMAGE_NAME = "flask-app"
-        DOCKER_IMAGE_TAG = "v2"
+        DOCKER_IMAGE_TAG = "v3"
     }
     stages {
         stage('git clone') {
