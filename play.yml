@@ -10,13 +10,8 @@
   
   tasks:
     # Install Docker
-    - name: Install pip
-      yum:
-        name: pip
-        state: present
-
     - name: Install Docker
-      pip:
+      package:
         name: docker-py
         state: present
 
