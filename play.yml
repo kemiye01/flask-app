@@ -11,7 +11,7 @@
   tasks:
     # Install Docker
     - name: Install Docker
-      apt:
+      yum:
         name: docker.io
         update_cache: yes
     
