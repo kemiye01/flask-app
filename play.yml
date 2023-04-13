@@ -11,9 +11,14 @@
   tasks:
     # Install Docker
     - name: Install Docker
-      yum:
-        name: docker.io
-        update_cache: yes
+      pip:
+        name: docker-py
+        state: present
+
+    - name: start docker
+      service:
+        name: docker
+        state: started
     
     # Pull Docker image
     - name: Pull Docker image
