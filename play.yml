@@ -18,8 +18,8 @@
     # Install Docker
     - name: Install Docker
       package:
-        name: docker
-        state: present
+        name: python3-docker
+        state: latest
 
     - name: start docker
       service:
