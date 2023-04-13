@@ -1,44 +1,44 @@
----
-- name: Deploy Flask App
-  hosts: all
-  become: yes
-  collections:
-    - community.general
-  vars: 
-   ansible_become: yes 
-   ansible_python_interpreter: /usr/bin/python3
-   container_default_behavior: compatibility
+# ---
+# - name: Deploy Flask App
+#   hosts: all
+#   become: yes
+#   collections:
+#     - community.general
+#   vars: 
+#    ansible_become: yes 
+#    ansible_python_interpreter: /usr/bin/python3
+#    container_default_behavior: compatibility
 
-  tasks:
-    - name: Install Docker
-      apt:
-        name: docker.io
-        update_cache: yes
-    - name: Install Docker
-      package:
-        name: docker
-        state: present
+#   tasks:
+#     - name: Install Docker
+#       apt:
+#         name: docker.io
+#         update_cache: yes
+#     - name: Install Docker
+#       package:
+#         name: docker
+#         state: present
 
-    - name: start docker
-      service:
-        name: docker
-        state: started
+#     - name: start docker
+#       service:
+#         name: docker
+#         state: started
 
-    - name: Pull Docker image
-      docker_image:
-        name: kemiye01/flask-app:v4
-        source: pull
+#     - name: Pull Docker image
+#       docker_image:
+#         name: kemiye01/flask-app:v4
+#         source: pull
 
-    - name: Pull Docker Image
-      become: yes
-      docker_image:
-        name: kemiye01/flask-app:v1
-        state: present
+#     - name: Pull Docker Image
+#       become: yes
+#       docker_image:
+#         name: kemiye01/flask-app:v1
+#         state: present
 
-    - name: Start Docker Container
-      docker_container:
-        name: flaskapp
-        image: kemiye01/flask-app:v4
-        ports:
-          - 5000:5000
-        state: started
+#     - name: Start Docker Container
+#       docker_container:
+#         name: flaskapp
+#         image: kemiye01/flask-app:v4
+#         ports:
+#           - 5000:5000
+#         state: started
