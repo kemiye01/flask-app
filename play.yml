@@ -10,6 +10,11 @@
   
   tasks:
     # Install Docker
+    - name: Install pip
+      pip:
+        name: pip2
+        state: present
+
     - name: Install Docker
       pip:
         name: docker-py
