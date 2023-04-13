@@ -23,12 +23,12 @@ pipeline {
                 }
             }
         }
-        // stage('Docker Login') {
-        //     steps {
-        //         script {
-        //             withCredentials([usernamePassword(credentialsId: 'login', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-        //                 sh "echo '${DOCKER_PASSWORD}' | sudo docker login -u '${DOCKER_USERNAME}' --password-stdin"
-        //                 echo 'Successfully logged into Docker Hub'
+        stage('Docker Login') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh "echo '${DOCKER_PASSWORD}' | sudo docker login -u '${DOCKER_USERNAME}' --password-stdin"
+                        echo 'Successfully logged into Docker Hub'
                     }
                 }
             }
@@ -50,4 +50,5 @@ pipeline {
             }
         }
     }
+
 }
