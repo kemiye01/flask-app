@@ -7,7 +7,7 @@
     ansible_become: yes
     docker_image_name: kemiye01/flask-app:v3
     docker_container_name: myfaskapp
-    python_interpreter: /usr/bin/python3
+    # python_interpreter: /usr/bin/python3
     container_default_behavior: compatibility
   
   tasks:
@@ -54,4 +54,4 @@
         restart: yes
         tty: yes
         interactive: yes
-        command: "{{ python_interpreter }}"
+        # command: "{{ python_interpreter }}"
