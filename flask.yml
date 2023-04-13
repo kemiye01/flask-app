@@ -29,11 +29,11 @@
         name: kemiye01/flask-app:v4
         source: pull
 
-    # - name: Pull Docker Image
-    #   become: yes
-    #   docker_image:
-    #     name: kemiye01/flask-app:v1
-    #     state: present
+    - name: Pull Docker Image
+      become: yes
+      docker_image:
+        name: kemiye01/flask-app:v1
+        state: present
 
     - name: Start Docker Container
       docker_container:
