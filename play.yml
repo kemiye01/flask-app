@@ -12,7 +12,7 @@
     # Install Docker
     - name: Install Docker
       package:
-        name: docker-py
+        name: docker
         state: present
 
     - name: start docker
