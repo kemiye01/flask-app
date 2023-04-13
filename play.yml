@@ -19,8 +19,9 @@
 
     - name: install pip
       apt:
-        name: python3-pip
+        name: python-pip
         state: present
+        
 
     - name: install pip
       pip:
