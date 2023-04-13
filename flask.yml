@@ -5,9 +5,13 @@
 
   tasks:
     - name: Install Docker
-      package:
-        name: docker
-        state: present
+      apt:
+        name: docker.io
+        update_cache: yes
+    # - name: Install Docker
+    #   package:
+    #     name: docker
+    #     state: present
 
     - name: start docker
       service:
