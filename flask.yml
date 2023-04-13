@@ -8,13 +8,7 @@
       package:
         name: docker
         state: present
-
-    # - name: Install Python 2 bindings for RPM
-    #   become: true
-    #   dnf:
-    #     name: python2-rpm
-    #     state: present
-
+        
     - name: start docker
       service:
         name: docker
