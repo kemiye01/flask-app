@@ -6,7 +6,7 @@
   vars:
     docker_image_name: kemiye01/flask-app:v3
     docker_container_name: myfaskapp
-    python_interpreter: /usr/bin/python3
+    python_interpreter: /usr/bin/python2.7
   
   tasks:
     # Install Docker
