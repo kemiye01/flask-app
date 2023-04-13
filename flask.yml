@@ -40,5 +40,5 @@
         name: flaskapp
         image: kemiye01/flask-app:v1
         ports:
-          - "5000:5000"
+          - 5000:5000
         state: started
