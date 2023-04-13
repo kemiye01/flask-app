@@ -2,6 +2,8 @@
 - name: Deploy Flask App
   hosts: all
   become: yes
+  vars:  
+  python_interpreter: /usr/bin/python3
 
   tasks:
     - name: Install Docker
