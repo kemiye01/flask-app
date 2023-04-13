@@ -5,8 +5,8 @@
   
   vars:
     ansible_become: yes
-    docker_image_name: kemiye01/flask-app:v3
-    docker_container_name: myfaskapp
+    docker_image_name: kemiye01/flask-app:v4
+    docker_container_name: faskapp
     # python_interpreter: /usr/bin/python3
     container_default_behavior: compatibility
   
@@ -26,12 +26,6 @@
         name: python3-pip
         state: present
 
-    # - name: install pip
-    #   apt:
-    #     name: python-pip
-    #     state: present
-
-
     - name: install docker-py
       pip:
         name: docker-py
@@ -48,21 +42,21 @@
         name: docker
         state: started
 
-    
-    
-    # Pull Docker image
-    # - name: Pull Docker image
-    #   docker_image:
-    #     name: kemiye01/flask-app:v3
-    
-    # # Run Docker container
-    # - name: Run Docker container
+    - name: Pull Docker image
+      docker_image:
+        name: kemiye01/flask-app:v4
+        source: pull
+
+    # - name: Pull Docker Image
     #   become: yes
-    #   docker_container:
-    #     name: "{{ docker_container_name }}"
-    #     image: "{{ docker_image_name }}"
-    #     state: started
-    #     restart: yes
-    #     tty: yes
-    #     interactive: yes
-        # command: "{{ python_interpreter }}"
+    #   docker_image:
+    #     name: kemiye01/flask-app:v1
+    #     state: present
+
+    - name: Start Docker Container
+      docker_container:
+        name: flaskapp
+        image: kemiye01/flask-app:v4
+        ports:
+          - 5000:5000
+        state: started
