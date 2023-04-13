@@ -14,11 +14,17 @@
         name: docker
         state: started
 
-    - name: Pull Docker Image
-      become: yes
+    - name: Pull Docker image
       docker_image:
-        name: kemiye01/flask-app:v1
-        state: present
+        name: kemiye01/flask-app:v3
+        source: pull
+        ansible_python_interpreter: /usr/bin/python3
+
+    # - name: Pull Docker Image
+    #   become: yes
+    #   docker_image:
+    #     name: kemiye01/flask-app:v1
+    #     state: present
 
     - name: Start Docker Container
       docker_container:
