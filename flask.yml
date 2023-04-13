@@ -26,7 +26,7 @@
 
     - name: Pull Docker image
       docker_image:
-        name: kemiye01/flask-app:v3
+        name: kemiye01/flask-app:v4
         source: pull
 
     # - name: Pull Docker Image
