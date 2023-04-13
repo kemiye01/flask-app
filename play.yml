@@ -17,7 +17,7 @@
           - python3-pip
     # Install Docker
     - name: Install Docker
-      apt:
+      yum:
         name: python3-docker
         state: latest
 
