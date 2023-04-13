@@ -1,0 +1,34 @@
+---
+- name: Install Docker and run container
+  hosts: all
+  become: true
+  
+  vars:
+    docker_image_name: kemiye01/flask-app:v3
+    docker_container_name: myfaskapp
+    python_interpreter: /usr/bin/python3
+  
+  tasks:
+    # Install Docker
+    - name: Install Docker
+      apt:
+        name: docker.io
+        update_cache: yes
+    
+    # Pull Docker image
+    - name: Pull Docker image
+      become_user: kemiye01
+      docker_image:
+        name: kemiye01/flask-app:v3
+    
+    # Run Docker container
+    - name: Run Docker container
+      become_user: kemiye01
+      docker_container:
+        name: "{{ docker_container_name }}"
+        image: "{{ docker_image_name }}"
+        state: started
+        restart: yes
+        tty: yes
+        interactive: yes
+        command: "{{ python_interpreter }}"
