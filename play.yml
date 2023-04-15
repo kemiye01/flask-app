@@ -66,7 +66,7 @@
           - "/var/run/docker.sock:/var/run/docker.sock"
         
     - name: monitor docker with prometheus 
-      community.general.prometheus_scrape_configs:
+      prometheus_scrape_configs:
     - job_name: docker
       static_configs:
     - targets: ['flaskapp:5000']
