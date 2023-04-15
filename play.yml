@@ -57,59 +57,20 @@
           - 5000:5000
         state: started
 
-    # - name: Start Prometheus container
-    #   docker_container:
-    #     name: prometheus
-    #     image: prom/prometheus
-    #     ports:
-    #       - 9090:9090
-    #     state: started
-    #     volumes:
-    #       - "/var/run/docker.sock:/var/run/docker.sock"
-   
-    # - name: triger scrape
-    #   community.general.prometheus.prometheus_scrape_configs:
-    #     scrape_interval: 10s
-    #     job_name: 'docker'
-    #     static_configs:
-    #     - targets: ['flaskapp:5000']
-    - name: Create Docker network
-      docker_network:
-        name: nagios_network
-        state: present
-    - name: Create Nagios Docker container
+    - name: Start Prometheus container
       docker_container:
-        name: "{{ nagios_container_name }}"
-        image: jasonrivers/nagios:latest
-        state: started
+        name: prometheus
+        image: prom/prometheus
         ports:
-          - "8080:80"
+          - 9090:9090
+        state: started
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
-        networks:
-          - name: nagios_network
-            aliases:
-              - "{{ nagios_container_name }}"
-        env:
-          NAGIOSADMIN_USER: admin
-          NAGIOSADMIN_PASS: admin
-      register: nagios_container
-    - name: Wait for Nagios to start
-      wait_for:
-        host: "{{ nagios_container_name }}"
-        port: 8080
-      retries: 30
-    - name: Install check_docker plugin on Nagios container
-      docker_container_exec:
-        name: "{{ nagios_container_name }}"
-        command: "/usr/local/nagios/plugins/check_docker.sh --install"
-        privileged: true
-    - name: Configure Nagios to monitor Docker container
-      docker_container_exec:
-        name: "{{ nagios_container_name }}"
-        command: "/usr/local/nagios/plugins/check_docker.sh --name '{{ monitored_container_name }}' --label com.docker.compose.service={{ monitored_container_name }} --label com.docker.compose.project=project_name --alias {{ monitored_container_name }} --mode service"
-        privileged: true
-    - name: Restart Nagios container
-      docker_container:
-        name: "{{ nagios_container_name }}"
-        state: restarted
+   
+    - name: triger scrape
+      community.general.prometheus.prometheus_scrape_configs:
+        scrape_interval: 10s
+        job_name: 'docker'
+        static_configs:
+        - targets: ['flaskapp:5000']
+   
