@@ -65,8 +65,9 @@
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
         
-    - name: monitor docker with prometheus
-      prometheus_targets:
-    - job_name: docker
-      static_configs:
-    - targets: ['flaskapp:5000']
+    - name: Trigger scrape
+      uri:
+        url: http://3.92.132.57:5000/-/reload
+        method: GET
+        return_content: yes
+        status_code: 200
