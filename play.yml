@@ -66,8 +66,7 @@
           - "/var/run/docker.sock:/var/run/docker.sock"
         
     - name: Trigger scrape
-      uri:
-        url: http://3.92.132.57:5000/-/reload
-        method: GET
-        return_content: yes
-        status_code: 200
+      scrape_configs:
+        - job_name: 'docker'
+          static_configs:
+          - targets: ['docker_container_name:port']
