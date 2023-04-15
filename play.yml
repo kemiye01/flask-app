@@ -65,7 +65,8 @@
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
    
-    scrape_configs:
+    - name: triger scrape
+      scrape_configs:
         scrape_interval: 10s
         job_name: 'docker'
         static_configs:
