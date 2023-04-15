@@ -67,6 +67,7 @@
         
     - name: Trigger scrape
       scrape_config:
+      scrape_interval: 30s
     - job_name: 'docker'
       static_configs:
-    - targets: ['flaskapp:5000']
+      - targets: ['flaskapp:5000']
