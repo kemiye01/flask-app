@@ -2,22 +2,12 @@
 - name: Install Docker and run container
   hosts: all
   become: true
-  
-  # vars:
-  # #   ansible_become: yes
-  # #   docker_image_name: kemiye01/flask-app:v4
-  # #   docker_container_name: faskapp
-  # #   # python_interpreter: /usr/bin/python3
-  # #   container_default_behavior: compatibility
-  #     nagios_container_name: "nagios"
-  #     monitored_container_name: "flaskapp"
-  
   tasks:
      
-    - name: Install required packages
-      apt:
-        name: python3
-        state: present
+    # - name: Install required packages
+    #   apt:
+    #     name: python3
+    #     state: present
 
     - name: Update package cache
       apt:
