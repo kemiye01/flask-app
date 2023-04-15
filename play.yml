@@ -64,7 +64,7 @@
         state: started
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
-    - targets: ['localhost:5000']
+        targets: ['localhost:5000']
         
     # - name: Trigger scrape
     #   scrape_configs:
