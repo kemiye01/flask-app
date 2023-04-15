@@ -71,8 +71,6 @@
         url: http://localhost:5000
         method: GET
         status_code: 200
-        targets: ['flaskapp:5000']
-        scrape_interval: 10s
    
     # - name: triger scrape
     #   static_configs:
