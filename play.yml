@@ -3,12 +3,12 @@
   hosts: all
   become: true
   
-  vars:
-    ansible_become: yes
-    docker_image_name: kemiye01/flask-app:v4
-    docker_container_name: faskapp
-    # python_interpreter: /usr/bin/python3
-    container_default_behavior: compatibility
+  # vars:
+  #   ansible_become: yes
+  #   docker_image_name: kemiye01/flask-app:v4
+  #   docker_container_name: faskapp
+  #   # python_interpreter: /usr/bin/python3
+  #   container_default_behavior: compatibility
   
   tasks:
      
@@ -30,12 +30,12 @@
       pip:
         name: docker-py
         state: present            
-    # Install Docker
-    - name: Install Docker
-      apt:
-        name: docker.io
-        state: latest
-        update_cache: yes
+    
+    # - name: Install Docker
+    #   apt:
+    #     name: docker.io
+    #     state: latest
+    #     update_cache: yes
 
     - name: start docker
       service:
@@ -47,12 +47,6 @@
         name: kemiye01/flask-app:v4
         source: pull
 
-    # - name: Pull Docker Image
-    #   become: yes
-    #   docker_image:
-    #     name: kemiye01/flask-app:v1
-    #     state: present
-
     - name: Start Docker Container
       docker_container:
         name: flaskapp
@@ -60,3 +54,19 @@
         ports:
           - 5000:5000
         state: started
+
+    - name: Start Prometheus container
+      docker_container:
+        name: prometheus
+        image: prom/prometheus
+        ports:
+          - 9090:9090
+        state: started
+        volumes:
+          - "/var/run/docker.sock:/var/run/docker.sock"
+        
+    - name: monitor docker with prometheus 
+      scrape_configs:
+    - job_name: 'docker'
+      static_configs:
+    - targets: ['flaskapp:5000']
