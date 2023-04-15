@@ -65,8 +65,7 @@
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
         
-    - name: monitor docker with prometheus 
-      community.general.prometheus.prometheus_scrape_configs:
+    - name: monitor docker with prometheus
     - job_name: docker
       static_configs:
     - targets: ['flaskapp:5000']
