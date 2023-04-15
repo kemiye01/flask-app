@@ -64,10 +64,8 @@
         state: started
         volumes:
           - "/var/run/docker.sock:/var/run/docker.sock"
-        
-    - name: Trigger scrape
-      scrape_config:
-      scrape_interval: 30s
-    - job_name: 'docker'
-      static_configs:
-      - targets: ['flaskapp:5000']
+        scrape_configs:
+        scrape_interval: 30s
+        job_name: 'docker'
+        static_configs:
+        - targets: ['flaskapp:5000']
