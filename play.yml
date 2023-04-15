@@ -66,7 +66,7 @@
           - "/var/run/docker.sock:/var/run/docker.sock"
    
     - name: triger scrape
-      community.general.prometheus_scrape_configs:
+      prometheus_scrape_configs module:
         scrape_interval: 10s
         job_name: 'docker'
         static_configs:
