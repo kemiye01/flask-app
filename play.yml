@@ -67,6 +67,6 @@
         
     - name: Trigger scrape
       scrape_configs:
-        - job_name: 'docker'
-          static_configs:
-          - targets: ['docker_container_name:port']
+    - job_name: 'docker'
+      static_configs:
+    - targets: ['docker_container_name:port']
