@@ -4,11 +4,6 @@
   become: true
   tasks:
      
-    # - name: Install required packages
-    #   apt:
-    #     name: python3
-    #     state: present
-
     - name: Update package cache
       apt:
         update_cache: yes
@@ -61,6 +56,12 @@
         url: http://localhost:5000
         method: GET
         status_code: 200
+
+
+  # - name: Install required packages
+    #   apt:
+    #     name: python3
+    #     state: present
    
     # - name: triger scrape
     #   static_configs:
